@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #d20000; /* DHL red for heading text */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff; /* white background for tables */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* subtle shadow */
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ffcc29; /* DHL yellow for table header */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* light grey on hover */
+        }
+
+        .delete-link {
+            color: #d20000; /* DHL red for delete link */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Database</h2>
+
+    <h3>Requested Warehouse Space</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pallet Quantity</th>
+                <th>Postcode</th>
+                <th>Max Radius</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Company Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for find_space in find_spaces %}
+                <tr>
+                    <td>{{ find_space.id }}</td>
+                    <td>{{ find_space.pallet_quantity }}</td>
+                    <td>{{ find_space.postcode }}</td>
+                    <td>{{ find_space.max_radius }}</td>
+                    <td>{{ find_space.start_date }}</td>
+                    <td>{{ find_space.end_date }}</td>
+                    <td>{{ find_space.name }}</td>
+                    <td>{{ find_space.email }}</td>
+                    <td>{{ find_space.company_name }}</td>
+                    <td><span class="delete-link" onclick="confirmDelete('{{ url_for('delete_find_space', id=find_space.id) }}')">Delete</span></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Offered Warehouse Spaces</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Pallet Space Available</th>
+                <th>Warehouse Address</th>
+                <th>Start Date Available</th>
+                <th>End Date Available</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Company Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for offer_space in offer_spaces %}
+                <tr>
+                    <td>{{ offer_space.id }}</td>
+                    <td>{{ offer_space.pallet_space_available }}</td>
+                    <td>{{ offer_space.warehouse_address }}</td>
+                    <td>{{ offer_space.start_date_available }}</td>
+                    <td>{{ offer_space.end_date_available }}</td>
+                    <td>{{ offer_space.name }}</td>
+                    <td>{{ offer_space.email }}</td>
+                    <td>{{ offer_space.company_name }}</td>
+                    <td><span class="delete-link" onclick="confirmDelete('{{ url_for('delete_offer_space', id=offer_space.id) }}')">Delete</span></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function confirmDelete(url) {
+            if (confirm('Are you sure you want to delete this entry?')) {
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+</html>

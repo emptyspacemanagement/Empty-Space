@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management System</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* light grey background */
+            color: #333; /* dark grey text color */
+            font-family: 'Arial', sans-serif; /* specify your desired font */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #d20000; /* DHL red for heading background */
+            color: #fff; /* white text color */
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        ul.nav {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #ffcc29; /* DHL yellow for navigation background */
+        }
+
+        ul.nav li {
+            float: left;
+        }
+
+        ul.nav li a {
+            display: block;
+            color: #333; /* dark grey text color */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        ul.nav li a:hover {
+            background-color: #ddd; /* light grey on hover */
+        }
+
+        h2 {
+            color: #d20000; /* DHL red for heading text */
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff; /* white background for tables */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* subtle shadow */
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ffcc29; /* DHL yellow for table header */
+        }
+
+        tr:hover {
+            background-color: #f5f5f5; /* light grey on hover */
+        }
+
+        /* Updated home boxes styles */
+        .home-boxes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px 5%; /* Adjusted margin for space in between */
+        }
+
+        /* Home box */
+        .home-box {
+            color: #000; /* black text color */
+            padding: 30px;
+            text-align: center;
+            width: 48%;
+            border-radius: 0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+        }
+
+        /* Left home box */
+        .left-home-box {
+            background-color: #ffcc29; /* DHL yellow */
+        }
+
+        /* Right home box */
+        .right-home-box {
+            background-color: #d20000; /* DHL red */
+            color: #fff; /* white text color */
+        }
+
+        /* Modern and creative styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px;
+        }
+
+        p {
+            line-height: 1.6;
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Responsive styling */
+        @media only screen and (max-width: 768px) {
+            .home-boxes {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .home-box {
+                width: 100%;
+                margin-bottom: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Warehouse Management System</h1>
+
+    <ul class="nav">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('find_warehouse_space') }}">Find Warehouse Space</a></li>
+        <li><a href="{{ url_for('offer_warehouse_space') }}">Offer Warehouse Space</a></li>
+        <li><a href="{{ url_for('database') }}">Database</a></li>
+    </ul>
+
+    {% block content %}{% endblock %}
+
+    <!-- Home boxes -->
+    <div class="home-boxes">
+        <!-- Left home box -->
+        <div class="home-box left-home-box">
+            <h3>Find Warehouse Spaces!</h3>
+            <p>Do you find it difficult to find empty warehouse spaces? We offer flexible, storage solutions tailored to your needs. Benefiting from a dense network of warehouse solutions, we can offer you the perfect solution.</p>
+        </div>
+
+        <!-- Right home box -->
+<div class="home-box right-home-box">
+    <h3>Offer Warehouse Spaces!</h3>
+    <p style="color: #fff;">Do you have redundant warehouse space? Contact us to create new revenue streams by optimizing your warehouse usage. Your full warehouse is just one click away.</p>
+</div>
+
+    </div>
+</body>
+</html>
